@@ -16,8 +16,8 @@ body.dark {
 
 /* HEADER */
 .header {
-  height: 400px;
-  background: url("al_asil_restaurant.jpeg") center/cover;
+  height: 300px; /* smaller on mobile */
+  background: url("al_asil_restaurant.jpeg") center/cover no-repeat;
   position: relative;
 }
 
@@ -30,28 +30,45 @@ body.dark {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 10px;
+  text-align: center;
 }
 
 .overlay h1 {
   color: #f7c873;
   font-weight: 700;
+  font-size: 2rem;
 }
 
 .toggle-theme {
   background: #f7c873;
   border: none;
   margin-top: 10px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 /* CATEGORY BUTTONS */
+#categoryButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
 #categoryButtons button {
-  margin: 0 5px 5px 5px;
+  margin: 5px;
   border: none;
   padding: 6px 12px;
   border-radius: 12px;
   background: #f7c873;
   color: black;
   font-weight: bold;
+  cursor: pointer;
+  flex: 1 1 auto; /* responsive buttons */
+  min-width: 80px;
 }
 
 #categoryButtons button.active {
@@ -61,42 +78,38 @@ body.dark {
 
 /* MENU */
 .category {
-  margin-top: 30px;
+  margin-top: 20px;
   padding: 10px;
   border-right: 5px solid #f7c873;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: bold;
 }
 
+/* ITEM CARD */
 .item {
   background: var(--card);
-  padding: 15px 20px;
+  padding: 12px;
   border-radius: 15px;
-  margin: 12px 0;
+  margin: 10px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  /* Shadow for depth */
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex-wrap: wrap; /* allow wrapping on mobile */
 }
 
-/* Hover lift effect */
 .item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* Image styling */
 .item img {
   width: 70px;
   height: 70px;
   border-radius: 12px;
   object-fit: cover;
   margin-left: 15px;
-
-  /* Zoom animation on hover */
   transition: transform 0.3s ease;
 }
 
@@ -104,7 +117,6 @@ body.dark {
   transform: scale(1.2);
 }
 
-/* Text container */
 .item-info {
   flex-grow: 1;
   display: flex;
@@ -113,14 +125,12 @@ body.dark {
   margin-right: 10px;
 }
 
-/* Price styling */
 .price {
   color: #f7c873;
   font-weight: bold;
   margin-top: 4px;
 }
 
-/* Add button */
 .btn-add {
   background: #f7c873;
   border: none;
@@ -128,6 +138,7 @@ body.dark {
   padding: 6px 12px;
   font-weight: bold;
   transition: background 0.2s ease;
+  cursor: pointer;
 }
 
 .btn-add:hover {
@@ -139,7 +150,7 @@ body.dark {
   position: sticky;
   bottom: 0;
   background: var(--cart);
-  padding: 15px;
+  padding: 10px;
   border-top: 3px solid #f7c873;
 }
 
@@ -148,17 +159,24 @@ body.dark {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .qty button {
   background: #f7c873;
   border: none;
   padding: 2px 8px;
+  cursor: pointer;
 }
 
 .whatsapp {
   background: #25d366;
   color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .whatsapp:hover {
@@ -174,4 +192,67 @@ body.light {
 body.dark {
   --card: #1e1e1e;
   --cart: #1a1a1a;
+}
+
+/* RESPONSIVE MEDIA QUERIES */
+@media (max-width: 768px) {
+  .header {
+    height: 250px;
+  }
+
+  .overlay h1 {
+    font-size: 1.6rem;
+  }
+
+  .item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+  }
+
+  .item img {
+    margin-left: 0;
+    margin-bottom: 10px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .btn-add {
+    align-self: flex-end;
+    margin-top: 10px;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  #categoryButtons button {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+    min-width: 70px;
+  }
+
+  .cart {
+    padding: 10px 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay h1 {
+    font-size: 1.3rem;
+  }
+
+  .item img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .btn-add {
+    padding: 5px 10px;
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-size: 0.8rem;
+  }
 }
