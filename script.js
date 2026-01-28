@@ -142,9 +142,21 @@ renderCart();
 
 /* WHATSAPP */
 function sendWhatsApp() {
-    let msg = "طلب من مطعم الأصيل:%0A";
-    Object.keys(cart).forEach(n => msg += `- ${n} × ${cart[n].qty}%0A`);
-    msg += `- توصيل × 1%0A%0Aالمجموع: ${totalEl.textContent} ل.ل`;
+    let msg = "طلب من مطعم الأصيل:%0A%0A";
+    let total = 0;
+
+    Object.keys(cart).forEach(name => {
+        const item = cart[name];
+        const lineTotal = item.price * item.qty;
+        total += lineTotal;
+
+        msg += `- ${name} × ${item.qty} = ${lineTotal.toLocaleString()} ل.ل%0A`;
+    });
+
+    msg += `%0A- توصيل × 1 = 100,000 ل.ل%0A`;
+    total += 100000;
+
+    msg += `%0Aالمجموع: ${total.toLocaleString()} ل.ل`;
 
     cart = {};
     localStorage.removeItem("cart");
@@ -160,11 +172,42 @@ document.getElementById("cartToggle").onclick = () =>
 document.getElementById("closeCart").onclick = () =>
     document.querySelector(".cart-panel").classList.remove("open");
 
-/* THEME */
+/* THEME LOAD */
+const savedTheme = localStorage.getItem("theme");
+
+document.body.classList.remove("light", "dark");
+
+if (savedTheme) {
+    document.body.classList.add(savedTheme);
+} else {
+    document.body.classList.add("light"); // default
+}
+
+updateThemeButton();
+
 function toggleTheme() {
     const body = document.body;
-    body.classList.toggle("dark");
-    body.classList.toggle("light");
-    document.querySelector(".toggle-theme").textContent =
-        body.classList.contains("light") ? "الوضع الليلي" : "الوضع النهاري";
+
+    if (body.classList.contains("light")) {
+        body.classList.remove("light");
+        body.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+    } else {
+        body.classList.remove("dark");
+        body.classList.add("light");
+        localStorage.setItem("theme", "light");
+    }
+
+    updateThemeButton();
+}
+
+
+function updateThemeButton() {
+    const btn = document.querySelector(".toggle-theme");
+    if (!btn) return;
+
+    btn.textContent =
+        document.body.classList.contains("dark")
+            ? "الوضع النهاري"
+            : "الوضع الليلي";
 }
