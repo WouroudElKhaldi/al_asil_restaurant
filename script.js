@@ -157,7 +157,7 @@ renderCart();
 
 /* WHATSAPP */
 function sendWhatsApp() {
-    let msg = "طلب من مطعم الأصيل:%0A%0A";
+    let msg = "طلب من مطعم الأسيل:%0A%0A";
     let total = 0;
 
     Object.keys(cart).forEach(name => {
