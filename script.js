@@ -1,6 +1,6 @@
 const phone = "96171400452";
 const placeholder = "placeholder.png";
-const deliveryFee = 100000;
+const deliveryFee = 50000;
 
 const menuData = [
     {
@@ -175,7 +175,7 @@ function sendWhatsApp() {
     });
 
     msg += `%0A- توصيل × 1 = 100,000 ل.ل%0A`;
-    total += 100000;
+    total += deliveryFee;
 
     msg += `%0Aالمجموع: ${total.toLocaleString()} ل.ل`;
 
@@ -232,3 +232,4 @@ function updateThemeButton() {
             ? "الوضع النهاري"
             : "الوضع الليلي";
 }
+
