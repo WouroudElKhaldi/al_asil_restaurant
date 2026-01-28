@@ -65,11 +65,12 @@ function renderMenu() {
             <strong>${i[0]}</strong>
             <div class="price">${i[1]} ل.ل</div>
           </div>
-          <button 
-            class="btn-add ${cart[i[0]] ? 'disabled' : ''}" 
-            ${cart[i[0]] ? 'disabled' : ''}
-            onclick="addToCart('${i[0]}',${i[1]}, this)">
-            +
+            <button 
+                class="btn-add ${cart[i[0]] ? 'disabled' : ''}" 
+                ${cart[i[0]] ? 'disabled' : ''}
+                data-name="${i[0]}"
+                onclick="addToCart('${i[0]}',${i[1]}, this)">
+                +
             </button>
         </div>`;
         });
@@ -102,11 +103,25 @@ function showToast() {
 }
 
 function changeQty(name, d) {
+    if (!cart[name]) return;
+
     cart[name].qty += d;
-    if (cart[name].qty <= 0) delete cart[name];
+
+    if (cart[name].qty <= 0) {
+        delete cart[name];
+
+        // 🔓 Reactivate Add button in menu
+        const btn = document.querySelector(`.btn-add[data-name="${name}"]`);
+        if (btn) {
+            btn.disabled = false;
+            btn.classList.remove("disabled");
+        }
+    }
+
     saveCart();
     renderCart();
 }
+
 
 function renderCart() {
     cartItems.innerHTML = "";
