@@ -163,6 +163,16 @@ renderCart();
 
 /* WHATSAPP */
 function sendWhatsApp() {
+    // Check if cart is empty
+    if (Object.keys(cart).length === 0) {
+        // Optionally, show a toast or notification
+        const toast = document.getElementById("toast");
+        toast.textContent = "السلة فارغة!";
+        toast.classList.add("show");
+        setTimeout(() => toast.classList.remove("show"), 2000);
+        return;
+    }
+
     let msg = "طلب من مطعم الأسيل:%0A%0A";
     let total = 0;
 
@@ -174,15 +184,17 @@ function sendWhatsApp() {
         msg += `- ${name} × ${item.qty} = ${lineTotal.toLocaleString()} ل.ل%0A`;
     });
 
-    msg += `%0A- توصيل × 1 = 100,000 ل.ل%0A`;
+    msg += `%0A- توصيل × 1 = ${deliveryFee.toLocaleString()} ل.ل%0A`;
     total += deliveryFee;
 
     msg += `%0Aالمجموع: ${total.toLocaleString()} ل.ل`;
 
+    // Clear cart
     cart = {};
     localStorage.removeItem("cart");
     renderCart();
 
+    // Open WhatsApp
     window.open(`https://wa.me/${phone}?text=${msg}`, "_blank");
 }
 
@@ -232,4 +244,5 @@ function updateThemeButton() {
             ? "الوضع النهاري"
             : "الوضع الليلي";
 }
+
 
