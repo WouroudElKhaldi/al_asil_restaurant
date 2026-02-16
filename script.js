@@ -18,7 +18,7 @@ const menuData = [
             ["سبانغ", 100000, "man2oush_sabene8.png"], ["زعتر", 50000, "man2oush_za3tar.png"], ["زعتر خضار", 80000, "man2oush_za3tar_khoudar.png"],
             ["نص زعتر جبنة", 100000, "man2oush_nos_nos.png"], ["كعك جبن", 100000, "man2oush_ka3k_jebne.png"], ["كعك جبنة خضار", 150000, ""],
             ["بيتزا صغير", 350000, "pizza_z8ir.png"], ["بيتزا وسط", 500000, "pizza_wasat.png"], ["بيتزا كبير", 850000, "pizza_kbir.png"],
-            ["بعلبكية", 400000, "man2oush_b3albakyeh.png"], ["سواري مشكل", 350000, "man2oush_sware_mshakal.png"], ["شامية", 600000, "man2oush_shamyeh.png"]
+            ["بعلبكية", 400000, "man2oush_b3albakyeh.png"], ["سواري مشكل", 350000, "man2oush_sware_mshakal.png"], ["شامية", 600000, "man2oush_shamyeh.png"], ["100000", "لحم بعجين", "lahem_b_ajin.png"]
         ]
     },
     {
@@ -244,5 +244,6 @@ function updateThemeButton() {
             ? "الوضع النهاري"
             : "الوضع الليلي";
 }
+
 
 
