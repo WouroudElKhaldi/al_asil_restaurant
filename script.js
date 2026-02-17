@@ -13,8 +13,8 @@ const menuData = [
     { cat: "علب نصف كيلو", items: [["حمص", 200000, "hommos.png"], ["فول", 200000, "foul_tahina.png"], ["مسبحة", 200000, "msabaha.png"]] },
     {
         cat: "معجنات", items: [
-            ["جبنة", 100000, "man2oush_jebne.png"], ["جبنة اكسترا", 150000, "man2oush_jebne_extra.png"], ["جبنة خضار", 150000, "man2oush_jebne_khoudar.png"],
-            ["لحمة", 100000, "man2oush_lahme.png"], ["لحمة اكسترا", 150000, "man2oush_lahme_extra.png"], ["قريش", 100000, ""],
+            ["جبنة", 130000, "man2oush_jebne.png"], ["جبنة اكسترا", 150000, "man2oush_jebne_extra.png"], ["جبنة خضار", 150000, "man2oush_jebne_khoudar.png"],
+            ["لحمة", 130000, "man2oush_lahme.png"], ["لحمة اكسترا", 150000, "man2oush_lahme_extra.png"], ["قريش", 100000, ""],
             ["سبانغ", 100000, "man2oush_sabene8.png"], ["زعتر", 50000, "man2oush_za3tar.png"], ["زعتر خضار", 80000, "man2oush_za3tar_khoudar.png"],
             ["نص زعتر جبنة", 100000, "man2oush_nos_nos.png"], ["كعك جبن", 100000, "man2oush_ka3k_jebne.png"], ["كعك جبنة خضار", 150000, ""],
             ["بيتزا صغير", 350000, "pizza_z8ir.png"], ["بيتزا وسط", 500000, "pizza_wasat.png"], ["بيتزا كبير", 850000, "pizza_kbir.png"],
@@ -244,6 +244,7 @@ function updateThemeButton() {
             ? "الوضع النهاري"
             : "الوضع الليلي";
 }
+
 
 
 
